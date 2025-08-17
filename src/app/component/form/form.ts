@@ -20,6 +20,14 @@ export class Form {
 
   contactForm: FormGroup;
 
+  ngOnInit() {
+    const contactToEdit = this.edit();
+
+    if (contactToEdit) {
+      this.populateForm(contactToEdit);
+    }
+  }
+
   constructor(private formBuilder: FormBuilder) {
     this.contactForm = this.formBuilder.group({
       name: ['', [Validators.required]],
