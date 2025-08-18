@@ -38,8 +38,17 @@ export class Form {
 
   public onSubmit() {
     if (this.contactForm.valid) {
-      this.contact.emit(this.contactForm.value);
+      const formData = this.contactForm.value;
+
+      const editedContact = this.edit();
+      if (editedContact) {
+        formData.id = editedContact.id;
+      }
+
+      this.newContact.emit(formData);
       this.contactForm.reset();
+} else {
+      alert('Please fill in all required fields correctly.');
     }
   }
 
