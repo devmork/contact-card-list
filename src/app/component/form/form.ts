@@ -52,6 +52,13 @@ export class Form {
     }
   }
 
+  public populateForm(contact: Contact) {
+    this.contactForm.patchValue({
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone,
+    });
+  }
   public onCancel() {
     this.cancel.emit();
   }
