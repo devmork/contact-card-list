@@ -1,0 +1,18 @@
+<form>
+  <fieldset
+    class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
+  >
+    <label class="label">Name</label>
+    <input type="text" class="input" formControlName="name" required />
+
+    <label class="label">Email</label>
+    <input type="email" class="input" formControlName="email" required />
+
+    <label class="label">Phone Number</label>
+    <input type="tel" class="input" formControlName="phone" required />
+  </fieldset>
+  <div class="flex justify-end gap-4 mt-4">
+    <button class="btn btn-secondary" type="button">Cancel</button>
+    <button class="btn btn-primary" type="submit">Add / Edit</button>
+  </div>
+</form>

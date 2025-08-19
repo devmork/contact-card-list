@@ -9,9 +9,13 @@
         placeholder="Search"
         class="input input-bordered w-24 md:w-auto"
       />
-      <div class="btn-circle">
+      <!-- Open the modal using ID.showModal() method -->
+      <button class="btn" onclick="contact_form_modal.showModal()">
         <i class="fa fa-plus"></i>
-      </div>
+      </button>
+      <dialog id="contact_form_modal" class="modal">
+        <app-contact-form></app-contact-form>
+      </dialog>
     </div>
   </div>
 </header>

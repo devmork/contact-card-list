@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { ContactForm } from '../../shared/components/contact-form/contact-form';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [ContactForm],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.css',
 })
-export class Header {
-
-}
+export class Header {}
