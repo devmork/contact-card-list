@@ -1,1 +1,53 @@
-<p>contact-card works!</p>
+@for (contact of contacts; track $index ) {
+<div class="card w-80 bg-white shadow-lg border border-purple-100 m-8">
+  <div class="card-body p-6">
+    <div class="flex items-start gap-4">
+      Avatar/Profile Image
+      <div class="avatar">
+        <div
+          class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-500"
+        ></div>
+      </div>
+      <!-- Name -->
+      <h2 class="card-title text-xl font-bold text-base-300">
+        {{ contact.name }}
+      </h2>
+    </div>
+    <!-- Contact Details -->
+    <div class="mt-4 space-y-2">
+      <!-- Email -->
+      <div class="flex items-center gap-2 text-gray-600">
+        <i class="fa-regular fa-envelope"></i>
+        <span>{{ contact.email }}</span>
+      </div>
+
+      <!-- Phone -->
+      <div class="flex items-center gap-2 text-gray-600">
+        <i class="fa-solid fa-phone"></i>
+        <span>{{ contact.phone }}</span>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="card-actions justify-end mt-4">
+      <button
+        class="btn btn-ghost btn-sm text-primary"
+        (click)="updateContact(contact)"
+      >
+        <i class="fa-regular fa-pen-to-square"></i>
+      </button>
+
+      <button
+        class="btn btn-ghost btn-sm text-error"
+        (click)="deleteContact(contact)"
+      >
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>
+} @if (showContactForm) {
+<div class="flex items-center">
+  <app-contact-form [contactToUpdate]="contactToUpdate"></app-contact-form>
+</div>
+}

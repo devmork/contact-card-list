@@ -12,13 +12,17 @@ export class ContactService {
     this.saveToLocalStorage();
   }
 
-  public editContact(contact: Contact) {
+  public updateContact(contact: Contact) {
     const index = this.contacts.findIndex((c) => c.id === contact.id);
     this.contacts[index] = contact;
     this.saveToLocalStorage();
   }
 
-  public deleteContact(id: number) {}
+  public deleteContact(contact: Contact) {
+    const index = this.contacts.findIndex((c) => c.id === contact.id);
+    this.contacts.splice(index, 1);
+    this.saveToLocalStorage();
+  }
 
   public getAllContacts() {
     const savedContacts = localStorage.getItem('contacts');

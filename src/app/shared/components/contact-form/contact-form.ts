@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
+import { Contact } from '../../../models/interface/contact.interface';
 
 @Component({
   selector: 'app-contact-form',
@@ -18,6 +19,7 @@ import { ContactService } from '../../services/contact.service';
 export class ContactForm {
   contactService = inject(ContactService);
   contactForm: FormGroup;
+  contactToUpdate = input<Contact>();
 
   constructor(private formBuilder: FormBuilder) {
     this.contactForm = this.formBuilder.group({
@@ -27,10 +29,27 @@ export class ContactForm {
     });
   }
 
-  saveContact() {
+  ngOnInit() {
+    const contact = this.contactToUpdate();
+    if (contact) {
+      this.contactForm.patchValue({
+        name: contact.name,
+        email: contact.email,
+        phone: contact.phone,
+      });
+    }
+  }
+  submitContact() {
     if (this.contactForm.valid) {
-      const contactData = this.contactForm.getRawValue();
-      this.contactService.addContact(contactData);
+      const contactData: Contact = this.contactForm.getRawValue();
+      const contact = this.contactToUpdate();
+      if (contact) {
+        contactData.id = contact.id;
+        this.contactService.updateContact(contactData);
+      } else {
+        this.contactService.addContact(contactData);
+      }
+      this.contactForm.reset();
     }
   }
 }
