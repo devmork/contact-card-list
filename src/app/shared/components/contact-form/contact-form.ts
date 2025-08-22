@@ -24,9 +24,12 @@ export class ContactForm {
 
   constructor(private formBuilder: FormBuilder) {
     this.contactForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.email]],
-      phone: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: [
+        '',
+        [Validators.required, Validators.pattern(/^(09|\+639)\d{9}$/)],
+      ],
     });
   }
 

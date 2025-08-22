@@ -4,12 +4,28 @@
   >
     <label class="label">Name</label>
     <input type="text" class="input" formControlName="name" required />
-
+    @if (contactForm.controls['name'].invalid &&
+    contactForm.controls['name'].touched) {
+    <div class="text-red-500 text-sm mt-1">
+      <p>Name is required.</p>
+    </div>
+    }
     <label class="label">Email</label>
     <input type="email" class="input" formControlName="email" required />
-
+    @if (contactForm.controls['email'].invalid &&
+    contactForm.controls['email'].touched) {
+    <div class="text-red-500 text-sm mt-1">
+      <p>Email is required.</p>
+    </div>
+    }
     <label class="label">Phone Number</label>
     <input type="tel" class="input" formControlName="phone" required />
+    @if (contactForm.controls['phone'].invalid &&
+    contactForm.controls['phone'].touched) {
+    <div class="text-red-500 text-sm mt-1">
+      <p>Phone number is required.</p>
+    </div>
+    }
     <div class="flex justify-end gap-4 mt-4">
       <button class="btn btn-secondary" type="button" (click)="cancel()">
         Cancel

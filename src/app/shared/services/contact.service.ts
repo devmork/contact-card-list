@@ -28,11 +28,9 @@ export class ContactService {
     const savedContacts = localStorage.getItem('contacts');
     if (savedContacts) {
       this.contacts = JSON.parse(savedContacts);
-      this.contacts.sort((a, b) => a.name.localeCompare(b.name));
     }
   }
   private saveToLocalStorage(): void {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
-    this.contacts.sort((a, b) => a.name.localeCompare(b.name));
   }
 }
