@@ -51,10 +51,13 @@ export class ContactForm {
         this.contactService.addContact(contactData);
       }
       this.contactForm.reset();
+      this.closeModal.emit();
+    } else {
+      alert('Please fill in all fields before submitting.');
     }
   }
 
-  cancel() {
+  canel() {
     this.contactForm.reset();
     this.closeModal.emit();
   }

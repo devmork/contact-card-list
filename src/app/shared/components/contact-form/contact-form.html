@@ -11,7 +11,11 @@
     <label class="label">Phone Number</label>
     <input type="tel" class="input" formControlName="phone" required />
     <div class="flex justify-end gap-4 mt-4">
-      <button class="btn btn-secondary" type="button" (click)="cancel()">
+      <button
+        class="btn btn-secondary"
+        type="button"
+        (click)="closeModal.emit()"
+      >
         Cancel
       </button>
       <button class="btn btn-primary" type="submit">
