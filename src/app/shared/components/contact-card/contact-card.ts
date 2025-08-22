@@ -35,4 +35,8 @@ export class ContactCard {
     this.contactToUpdate = contact;
     this.showContactForm = true;
   }
+
+  closeContactForm() {
+    this.showContactForm = false;
+  }
 }

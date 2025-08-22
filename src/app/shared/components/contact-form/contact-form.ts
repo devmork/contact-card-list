@@ -57,8 +57,8 @@ export class ContactForm {
     }
   }
 
-  canel() {
-    this.contactForm.reset();
+  cancel() {
     this.closeModal.emit();
+    this.contactForm.reset();
   }
 }

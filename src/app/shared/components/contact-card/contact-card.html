@@ -1,12 +1,13 @@
 @if (showContactForm) {
-<div class="w-full max-w-md mx-auto">
-  <app-contact-form [contactToUpdate]="contactToUpdate"></app-contact-form>
-</div>
+<dialog class="modal modal-open">
+  <app-contact-form
+    [contactToUpdate]="contactToUpdate"
+    (closeModal)="closeContactForm()"
+  ></app-contact-form>
+</dialog>
 }
 
-<div
-  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center p-8"
->
+<div class="flex flex-wrap gap-6 p-8">
   @for (contact of contacts; track $index ) {
   <div class="card w-80 bg-white shadow-lg border border-purple-100 m-8">
     <div class="card-body p-6">
