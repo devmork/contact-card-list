@@ -24,12 +24,9 @@ export class ContactForm {
 
   constructor(private formBuilder: FormBuilder) {
     this.contactForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: [
-        '',
-        [Validators.required, Validators.pattern(/^(09|\+639)\d{9}$/)],
-      ],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
     });
   }
 
@@ -43,7 +40,7 @@ export class ContactForm {
       });
     }
   }
-  submitContact() {
+  public submitContact() {
     if (this.contactForm.valid) {
       const contactData: Contact = this.contactForm.getRawValue();
       const contact = this.contactToUpdate();
@@ -60,7 +57,7 @@ export class ContactForm {
     }
   }
 
-  cancel() {
+  public cancel() {
     this.closeModal.emit();
     this.contactForm.reset();
   }

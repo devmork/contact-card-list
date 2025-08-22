@@ -12,6 +12,6 @@ export class Header {
     const modal = document.getElementById(
       'contact_form_modal'
     ) as HTMLDialogElement;
-    modal?.close();
+    modal.close();
   }
 }

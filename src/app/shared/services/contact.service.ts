@@ -30,6 +30,7 @@ export class ContactService {
       this.contacts = JSON.parse(savedContacts);
     }
   }
+
   private saveToLocalStorage(): void {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
