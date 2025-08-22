@@ -33,5 +33,6 @@ export class ContactService {
   }
   private saveToLocalStorage(): void {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
+    this.contacts.sort((a, b) => a.name.localeCompare(b.name));
   }
 }

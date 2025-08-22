@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -20,6 +20,7 @@ export class ContactForm {
   contactService = inject(ContactService);
   contactForm: FormGroup;
   contactToUpdate = input<Contact>();
+  closeModal = output<void>();
 
   constructor(private formBuilder: FormBuilder) {
     this.contactForm = this.formBuilder.group({
@@ -51,5 +52,10 @@ export class ContactForm {
       }
       this.contactForm.reset();
     }
+  }
+
+  cancel() {
+    this.contactForm.reset();
+    this.closeModal.emit();
   }
 }
